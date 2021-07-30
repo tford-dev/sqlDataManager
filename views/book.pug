@@ -1,0 +1,12 @@
+extends layout
+
+block content
+    h1= book.title
+    p #[em #{book.title}] is a #{book.genre} book that was written by #[strong #{book.author}] in the year #{book.year}.
+
+    a(href="../") &larr; Back 
+    | | 
+    a(href="/books/" + book.id + "/edit") Edit Book 
+    | | 
+    a(href="/books/" + book.id + "/delete") Delete Book
+            

@@ -7,7 +7,7 @@
 var app = require('../app');
 var debug = require('debug')('sqldatamanager:server');
 var http = require('http');
-
+var sequelize = require('../models').sequelize;
 /**
  * Get port from environment and store in Express.
  */
@@ -26,6 +26,11 @@ var server = http.createServer(app);
  */
 
 server.listen(port);
+
+sequelize.sync().then(()=> {
+  server.listen(port);
+});
+
 server.on('error', onError);
 server.on('listening', onListening);
 
