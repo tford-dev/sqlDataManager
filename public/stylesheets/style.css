@@ -124,3 +124,7 @@ table {
   color: #fff;
 }
 
+.title, .author, .genre, .year, .id-num {
+  display: none;
+}
+

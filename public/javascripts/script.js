@@ -16,7 +16,7 @@ const showPage = (arr) => {
         const row = `
             <tr>
                 <td>
-                    <a href="/books/${i + 1}">${document.getElementsByClassName("title")[i].innerText}</a>
+                    <a href="/books/${document.getElementsByClassName("id-num")[i].innerText}">${document.getElementsByClassName("title")[i].innerText}</a>
                 </td>
                 <td>${document.getElementsByClassName("author")[i].innerText}</td>
                 <td>${document.getElementsByClassName("genre")[i].innerText}</td>
