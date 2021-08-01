@@ -1,21 +1,3 @@
-// const Sequelize = require('sequelize');
-
-// const sequelize = new Sequelize({
-//   dialect: "sqlite",
-//   storage: "library.db",
-//   //logging: false
-// });
-
-// const db = {
-//   sequelize, 
-//   sequelize,
-//   models: {},
-// };
-
-// db.models.Book = require("./models/book.js"), (sequelize);
-
-// module.exports = db;
-
 'use strict';
 
 const fs = require('fs');

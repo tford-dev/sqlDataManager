@@ -2,6 +2,7 @@
 
 const Sequelize = require('sequelize');
 
+//Schema for books in database
 module.exports = (sequelize) => {
     class Book extends Sequelize.Model {}
     Book.init({

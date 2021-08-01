@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const Book = require("../models").Book;
-const { Op } = require("sequelize");
 
+// Handler Function to wrap each route
 const asyncHandler = (callback) => {
   return async(req, res, next) => {
     try {
@@ -13,12 +13,13 @@ const asyncHandler = (callback) => {
   }
 }
 
-/* GET home page. */
+// GET route that redirects you to home page
 router.get('/', asyncHandler(async (req, res) => {
   //res.render('index', { title: 'Express' });
   res.redirect("/books");
 }));
 
+// GET route for home page
 router.get('/books', asyncHandler(async (req, res) => {
   const books = await Book.findAll({
     order: [['createdAt', 'DESC']]
@@ -68,7 +69,7 @@ router.get("/books/:id/edit", asyncHandler(async(req, res) => {
   }
 }));
 
-// Update a book
+// POST route to update a book
 router.post('/books/:id/edit', asyncHandler(async (req, res) => {
   let book;
   try {
@@ -90,32 +91,7 @@ router.post('/books/:id/edit', asyncHandler(async (req, res) => {
   }
 }));
 
-// router.post("/books/search/:id"), asyncHandler(async (req, res) => {
-//   const books = await Book.findAll({
-//         limit: 10,
-//         where: {
-//             asset_name: {
-//                 [Op.like]: '%' + req.body + '%'
-//             }
-//         }
-// }).then(function(){
-//     req.body = req.params.id;
-//     res.redirect("/books/search" + req.body);
-// }).catch(function(error){
-//     console.log(error);
-// });
-// });
-
-router.get("books/search/:id"), (req, res) => {
-  const query = req.params.query;
-  res.render("results");
-};
-
-router.post("books/search/:id", (req, res) => {
-  res.redirect("/books/search/", req.body);
-});
-
-//Delete book page
+//GET route to delete a book
 router.get("/books/:id/delete", asyncHandler(async (req, res) => {
   const book = await Book.findByPk(req.params.id);
   if(book){
@@ -125,7 +101,7 @@ router.get("/books/:id/delete", asyncHandler(async (req, res) => {
   }
 }));
 
-//Delete book
+//Post route to delete a book
 router.post('/books/:id/delete', asyncHandler(async (req ,res) => {
   const book = await Book.findByPk(req.params.id);
   if(book){

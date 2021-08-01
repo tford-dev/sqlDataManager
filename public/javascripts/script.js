@@ -10,6 +10,7 @@ let openPage = 1;
 const numPerPage = 5;
 let numOfPages = 0;
 
+//function that takes data displayed on /books route and pushes it into list array
 const showPage = (arr) => {
     for(let i = 0; i < arr.length; i++){
         const row = `
@@ -27,6 +28,7 @@ const showPage = (arr) => {
     numOfPages = Math.ceil(arr.length/numPerPage);
 };
 
+//Funtion that pushes table rows into DOM
 const drawList = () =>{
     tableBody.innerHTML = null;
     for(let i = 0; i < displayList.length; i++){
@@ -34,6 +36,7 @@ const drawList = () =>{
     }
 };
 
+//Function that adds buttons to view parts of data
 const addPagination = () => {
    for(let i = 0; i < numOfPages; i++){
    const tableButton = `
@@ -53,6 +56,7 @@ const addPagination = () => {
   }
 }
 
+//Function that organizes data into table body
 const loadList = () => {
   buttons[openPage - 1].classList.toggle("active");
   let start = ((openPage - 1) * numPerPage);

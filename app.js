@@ -6,8 +6,6 @@ const logger = require('morgan');
 const bodyParser = require("body-parser");
 
 const { sequelize } = require("./models");
-const db = require("./models");
-const Book = require("./models").Book;
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
@@ -53,7 +51,7 @@ app.use((err, req, res, next) => {
   }
 });
 
-app.listen(3001, () => {
+app.listen(3000, process.env.PORT, process.env.IP, ()=> {
   try{
     sequelize.authenticate();
     console.log("Database is now connected")
@@ -62,6 +60,5 @@ app.listen(3001, () => {
   }
   console.log("Connected and online");
 });
-
 
 module.exports = app;
