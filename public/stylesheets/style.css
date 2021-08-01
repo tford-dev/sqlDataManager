@@ -92,6 +92,35 @@ input[type=text] {
   width: 300px;
 }
 
+table {
+  height: 13em;
+}
+
 .error {
   color: rgb(236, 15, 15);
 }
+
+.link-list {
+  display: flex;
+  padding: 0 3px;
+}
+
+.table-button {
+  font-size: 1em;
+  cursor: pointer;
+	outline: none;
+	padding: 0.5em 0.85em;
+	background: #fff;
+  border: none;
+  border-radius: 3px;
+  text-decoration: none;
+	color: #019875;
+	box-shadow: 0 1px 8px 0 rgba(22, 42, 90, 0.05);
+	transition: 0.4s;
+}
+
+.active, .table-button:hover {
+  background-color: #019875;
+  color: #fff;
+}
+

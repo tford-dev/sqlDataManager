@@ -15,7 +15,6 @@ const asyncHandler = (callback) => {
 
 /* GET home page. */
 router.get('/', asyncHandler(async (req, res) => {
-  
   //res.render('index', { title: 'Express' });
   res.redirect("/books");
 }));
@@ -36,7 +35,6 @@ router.get('/books/new', (req, res) => {
 //POST route to create a book
 router.post('/books', asyncHandler(async(req, res) => {
   let book;
-  console.log(req.body);
     try {
       book = await Book.create(req.body);
       res.redirect("/books/" + book.id); 
@@ -91,6 +89,31 @@ router.post('/books/:id/edit', asyncHandler(async (req, res) => {
     }
   }
 }));
+
+// router.post("/books/search/:id"), asyncHandler(async (req, res) => {
+//   const books = await Book.findAll({
+//         limit: 10,
+//         where: {
+//             asset_name: {
+//                 [Op.like]: '%' + req.body + '%'
+//             }
+//         }
+// }).then(function(){
+//     req.body = req.params.id;
+//     res.redirect("/books/search" + req.body);
+// }).catch(function(error){
+//     console.log(error);
+// });
+// });
+
+router.get("books/search/:id"), (req, res) => {
+  const query = req.params.query;
+  res.render("results");
+};
+
+router.post("books/search/:id", (req, res) => {
+  res.redirect("/books/search/", req.body);
+});
 
 //Delete book page
 router.get("/books/:id/delete", asyncHandler(async (req, res) => {

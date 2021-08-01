@@ -13,10 +13,16 @@ block content
         th Year
       tbody
         each book in books
-          tr
-            td
+          tr.data-row
+            td.title
               a(href="/books/" + book.id)= book.title
-            td= book.author 
-            td= book.genre
-            td= book.year
+            td.author= book.author 
+            td.genre= book.genre
+            td.year= book.year
+  
+  .pagination
+    ul.link-list
+
+  
+  script(src='/javascripts/script.js')
   
