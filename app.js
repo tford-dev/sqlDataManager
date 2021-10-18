@@ -46,8 +46,18 @@ app.use((err, req, res, next) => {
   }
 });
 
-app.listen(3000, process.env.PORT, process.env.IP, ()=> {
-  try{
+// app.listen(3000, process.env.PORT, process.env.IP, ()=> {
+//   try{
+//     sequelize.authenticate();
+//     console.log("Database is now connected")
+//   } catch(error){
+//     console.error("Error connecting: ", err);
+//   }
+//   console.log("Connected and online");
+// });
+
+app.listen(process.env.PORT, process.env.IP, function() {
+    try{
     sequelize.authenticate();
     console.log("Database is now connected")
   } catch(error){
